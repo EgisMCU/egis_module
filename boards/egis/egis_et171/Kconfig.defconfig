@@ -1,7 +1,2 @@
-
-config TIMER_READS_ITS_FREQUENCY_AT_RUNTIME
-	default y
-	depends on DT_HAS_EGIS_ET171_CLOCK_ENABLED
-
-config HWINFO
-	default y
+# Copyright (c) 2025 Egis Technology Inc.
+# SPDX-License-Identifier: Apache-2.0
