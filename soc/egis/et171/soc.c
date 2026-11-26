@@ -8,6 +8,7 @@
 #include <zephyr/kernel.h>
 #include <zephyr/types.h>
 #include <zephyr/devicetree.h>
+#include <zephyr/drivers/timer/system_timer.h>
 
 /* ================================================================== ET171 HAL
  * et171 core
@@ -217,8 +218,7 @@ static int soc_pre_init(void)
 	sys_write32(1, 0xF0A00014U);
 
 #ifdef CONFIG_TIMER_READS_ITS_FREQUENCY_AT_RUNTIME
-	extern unsigned int z_clock_hw_cycles_per_sec;
-	z_clock_hw_cycles_per_sec = HAL_SMU_GetClock(SMU_CLK_APB);
+	z_sys_clock_hw_cycles_per_sec_set(HAL_SMU_GetClock(SMU_CLK_APB));
 #endif
 
 	/* Overwrite the default I/O configurations to reduce power consumption.                                     */
